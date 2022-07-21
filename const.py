@@ -1,0 +1,4 @@
+CONST_GREETINGS = "Привет"
+CONST_HELP = "Помощь"
+CATEGORY = 0
+DATE_LEN = 9
