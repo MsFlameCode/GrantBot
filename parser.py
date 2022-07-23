@@ -28,8 +28,8 @@ def category_one_and_two_today(list_of_lists, title, values_list_date, today):
             month_finish = int(str_date_finish[3] + str_date_finish[4])
             year_finish = int(str_date_finish[6] + str_date_finish[7] + str_date_finish[8] + str_date_finish[9])
             if (day_start <= today.day and month_start <= today.month and year_start <= today.year) and \
-                    ((day_finish >= today.day and month_finish == today.month) or month_finish >= today.month or year_finish >= today.year):
-                for j in range(len(title)):
+                     ((day_finish >= today.day and month_finish == today.month) or month_finish >= today.month or year_finish >= today.year):
+                for j in range(len(title)-1):
                     res += "*%s:* %s \n" % (title[j], list_of_lists[i][j])
                 res += '\n'
     return res
@@ -69,7 +69,7 @@ def parse_table_today():
         for i in range(len(values_list_date)):
             # первая строка - это заголовок
             if i != 0 and list_of_lists[i][0] == today_str:
-                for j in range(len(title)):
+                for j in range(len(title)-1):
                     str = "*%s:* %s \n" % (title[j], list_of_lists[i][j])
                     res += str
                 res += '\n'
@@ -89,7 +89,7 @@ def category_one_and_two_month(list_of_lists, title, values_list_date, today):
             day_start = int(str_date_start[0] + str_date_start[1])
             month_start = int(str_date_start[3] + str_date_start[4])
             if month_start == today.month and day_start > today.day:
-                for j in range(len(title)):
+                for j in range(len(title)-1):
                     res += "*%s:* %s \n" % (title[j], list_of_lists[i][j])
                 res += '\n'
     return res
@@ -131,7 +131,7 @@ def parse_table_month():
                 str_month = create_date(list_of_lists[i][0])
                 month = str_month[3] + str_month[4]
                 if month == today_month_str:
-                    for j in range(len(title)):
+                    for j in range(len(title)-1):
                         res += "*%s:* %s \n" % (title[j], list_of_lists[i][j])
                     res += '\n'
 
@@ -151,7 +151,7 @@ def category_one_and_two_soon(list_of_lists, title, values_list_date, today):
             month_start = int(str_date_start[3] + str_date_start[4])
             year_start = int(str_date_start[6] + str_date_start[7] + str_date_start[8] + str_date_start[9])
             if month_start > today.month or (month_start <= today.month and year_start > today.year):
-                for j in range(len(title)):
+                for j in range(len(title)-1):
                     res += "*%s:* %s \n" % (title[j], list_of_lists[i][j])
                 res += '\n'
     return res

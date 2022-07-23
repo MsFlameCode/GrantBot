@@ -36,7 +36,7 @@ async def process_start_command(message: types.Message):
 async def without_puree(message: types.Message):
     msg = "Выберите период для отображения конкурсов"
     const.CATEGORY = 1
-    await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_contest(),
+    await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_grant(),
                            disable_web_page_preview=True)
 
 
