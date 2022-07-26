@@ -26,8 +26,12 @@ async def process_start_command(message: types.Message):
 
 @dp.message_handler(commands=['help'])
 async def process_help_command(message: types.Message):
-    tg_analytic_linux.statistics( message.from_user.id, message.text)
-    await bot.send_message(message.from_user.id, const.CONST_HELP)
+    tg_analytic_linux.statistics(message.chat.id,message.text)
+    st = message.text.split(' ')
+    messages = tg_analytic_linux.analysis(st,message.chat.id)
+    await bot.send_message(message.chat.id, messages)
+    # tg_analytic_linux.statistics( message.from_user.id, message.text)
+    # await bot.send_message(message.from_user.id, const.CONST_HELP)
 
 
 @dp.message_handler(lambda message: message.text == "В начало 😎")
@@ -104,20 +108,10 @@ async def without_puree(message: types.Message):
     await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_contest(),
                            parse_mode='Markdown', disable_web_page_preview=True)
 
-
-@dp.message_handler(content_types=['text'])
-async def handle_text(message):
-    tg_analytic_linux.statistics(message.chat.id,message.text)
-    if message.text[:10] == 'статистика' or message.text[:10] == 'Cтатистика':
-        st = message.text.split(' ')
-        if 'txt' in st or 'тхт' in st:
-            tg_analytic_linux.analysis(st,message.chat.id)
-            with open('%s.txt' %message.chat.id ,'r',encoding='UTF-8') as file:
-                await bot.send_document(message.chat.id,file)
-            tg_analytic_linux.remove(message.chat.id)
-        else:
-            messages = tg_analytic_linux.analysis(st,message.chat.id)
-            await bot.send_message(message.chat.id, messages)
+@dp.message_handler()
+async def echo_message(message: types.Message):
+    msg = "Человек, я не понимаю тебя, нажми нужную кнопку 👇🏻"
+    await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_grant())
 
 if __name__ == '__main__':
     executor.start_polling(dp)

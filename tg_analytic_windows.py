@@ -54,6 +54,7 @@ def analysis(bid, user_id):
     list_of_number_of_user_in_df_user = list_of_number_of_user_in_df_user[-season:]
     df_command = df.groupby(['data', 'command']).count().reset_index()
     unique_commands = df['command'].unique()
+    inuque_id = len(df['id'].unique())
     commands_in_each_day = []
     list_of_dates_in_df_command = list(df_command['data'])
     list_of_number_of_user_in_df_command = list(df_command['id'])

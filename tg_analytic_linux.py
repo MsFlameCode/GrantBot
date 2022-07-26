@@ -67,27 +67,27 @@ def analysis(bid, user_id):
             commands_in_this_day = dict()
     commands_in_each_day = commands_in_each_day[-season:]
 
-    if 'пользователи' in bid:
-        message_to_user += 'За всё время бота использовало ' + '%s' % number_of_users \
-                           + ' %s ' % users_type.get(number_of_users, 'пользователей') + '\n' \
-                                                                                         'Пользователей за последние %s %s: \n' % (
-                               season, day_type.get(season, 'дней'))
-        for days, number, comm_day in zip(list_of_dates_in_df_user, list_of_number_of_user_in_df_user,
-                                          commands_in_each_day):
-            message_to_user += 'Дата:%s Количество:%d Из них новых:%s\n' % (days, number, comm_day.get('/start', 0))
-    if 'команды' in bid:
-        message_to_user += 'Статистика команд за последние %s %s: \n' % (season, day_type.get(season, 'дней'))
-        for days, commands in zip(list_of_dates_in_df_user, commands_in_each_day):
-            message_to_user += 'Дата:%s\n' % days
-            for i in unique_commands:
-                if i in commands:
-                    message_to_user += '%s - %s раз\n' % (i, commands.get(i))
-                else:
-                    message_to_user += '%s - 0 раз\n' % i
-
-    if 'txt' in bid or 'тхт' in bid:
-        with open('%s.txt' % user_id, 'w', encoding='UTF-8') as fil:
-            fil.write(message_to_user)
-            fil.close()
-    else:
+    #if 'пользователи' in bid:
+    message_to_user += 'За всё время бота использовало ' + '%s' % number_of_users \
+                       + ' %s ' % users_type.get(number_of_users, 'пользователей') + '\n' \
+                                                                                     'Пользователей за последние %s %s: \n' % (
+                           season, day_type.get(season, 'дней'))
+    for days, number, comm_day in zip(list_of_dates_in_df_user, list_of_number_of_user_in_df_user,
+                                      commands_in_each_day):
+        message_to_user += 'Дата:%s Количество:%d Из них новых:%s\n' % (days, number, comm_day.get('/start', 0))
+    # if 'команды' in bid:
+    #     message_to_user += 'Статистика команд за последние %s %s: \n' % (season, day_type.get(season, 'дней'))
+    #     for days, commands in zip(list_of_dates_in_df_user, commands_in_each_day):
+    #         message_to_user += 'Дата:%s\n' % days
+    #         for i in unique_commands:
+    #             if i in commands:
+    #                 message_to_user += '%s - %s раз\n' % (i, commands.get(i))
+    #             else:
+    #                 message_to_user += '%s - 0 раз\n' % i
+    #
+    # if 'txt' in bid or 'тхт' in bid:
+    #     with open('%s.txt' % user_id, 'w', encoding='UTF-8') as fil:
+    #         fil.write(message_to_user)
+    #         fil.close()
+    # else:
         return message_to_user
