@@ -36,6 +36,7 @@ def statistics(user_id, command):
 # make report
 def analysis(bid, user_id):
     season = int(bid[1])
+    print(season)
     df = pd.read_csv('data.csv', delimiter=';', encoding='utf8')
     number_of_users = len(df['id'].unique())
     number_of_days = len(df['data'].unique())
