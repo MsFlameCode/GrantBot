@@ -30,7 +30,7 @@ def category_one_and_two_today(list_of_lists, title, values_list_date, today):
             if (day_start <= today.day and month_start <= today.month and year_start <= today.year) and \
                      ((day_finish >= today.day and month_finish == today.month) or month_finish >= today.month or year_finish >= today.year):
                 for j in range(len(title)):
-                    res += "*%s:* %s \n" % (title[j], list_of_lists[i][j])
+                    res += "%s: %s \n" % (title[j], list_of_lists[i][j])
                 res += '\n'
     return res
 
@@ -70,7 +70,7 @@ def parse_table_today():
             # первая строка - это заголовок
             if i != 0 and list_of_lists[i][0] == today_str:
                 for j in range(len(title)):
-                    str = "*%s:* %s \n" % (title[j], list_of_lists[i][j])
+                    str = "%s: %s \n" % (title[j], list_of_lists[i][j])
                     res += str
                 res += '\n'
 

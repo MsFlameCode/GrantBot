@@ -86,8 +86,9 @@ async def without_puree(message: types.Message):
 async def without_puree(message: types.Message):
     tg_analytic_linux.statistics(message.from_user.id, message.text)
     msg = parser.parse_table_today()
-    await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_contest(),
-                           parse_mode='Markdown', disable_web_page_preview=True)
+    str = "%s" % (msg)
+    await bot.send_message(message.from_user.id, str, reply_markup=keyboard.create_keyboard_contest(),
+                           disable_web_page_preview=True)
 
 
 # получение информации в категории В этом месяце
