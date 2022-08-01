@@ -97,7 +97,7 @@ async def without_puree(message: types.Message):
     tg_analytic_linux.statistics(message.from_user.id, message.text)
     msg = parser.parse_table_month()
     await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_contest(),
-                           parse_mode='Markdown', disable_web_page_preview=True)
+                           disable_web_page_preview=True)
 
 
 # получение информации в категории В этом месяце
@@ -106,7 +106,7 @@ async def without_puree(message: types.Message):
     tg_analytic_linux.statistics(message.from_user.id, message.text)
     msg = parser.parse_table_soon()
     await bot.send_message(message.from_user.id, msg, reply_markup=keyboard.create_keyboard_contest(),
-                           parse_mode='Markdown', disable_web_page_preview=True)
+                           disable_web_page_preview=True)
 
 @dp.message_handler(content_types=['text'])
 async def handle_text(message):
