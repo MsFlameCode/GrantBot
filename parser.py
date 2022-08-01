@@ -30,7 +30,6 @@ def category_one_and_two_today(list_of_lists, title, values_list_date, today):
             if ((day_start <= today.day) or (month_start <= today.month and year_start <= today.year)) and \
                      ((day_finish >= today.day and month_finish == today.month) or month_finish >= today.month or year_finish >= today.year):
                 for j in range(len(title)):
-                    print("here")
                     res += "%s: %s \n" % (title[j], list_of_lists[i][j])
                 res += '\n'
     return res
