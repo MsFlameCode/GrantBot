@@ -27,7 +27,9 @@ def category_one_and_two_today(list_of_lists, title, values_list_date, today):
             day_finish = int(str_date_finish[0] + str_date_finish[1])
             month_finish = int(str_date_finish[3] + str_date_finish[4])
             year_finish = int(str_date_finish[6] + str_date_finish[7] + str_date_finish[8] + str_date_finish[9])
-            if ((day_start <= today.day) or (month_start <= today.month and year_start <= today.year)) and \
+            if ((day_start <= today.day and month_start <= today.month) or \
+                (day_start > today.day and month_start < today.month) or \
+                (day_start > today.day and month_start > today.month and year_start <= today.year)) and \
                      ((day_finish >= today.day and month_finish == today.month) or month_finish >= today.month or year_finish >= today.year):
                 for j in range(len(title)):
                     res += "%s: %s \n" % (title[j], list_of_lists[i][j])
